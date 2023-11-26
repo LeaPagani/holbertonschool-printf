@@ -21,6 +21,7 @@ int _write_char(char c)
 int _print_char(va_list ap)
 {
 	char c = va_arg(ap, int);
+
 	return (_write_char(c));
 }
 
