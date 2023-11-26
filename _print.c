@@ -18,28 +18,32 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format != 'c' && *format != 's' && *format != '%')
+			fun = get_f(format);
+			if (fun == NULL)
 			{
-				c += _putchar('%');
-				while (*format)
+				if (*format == '\0')
+					return (-1);
+				if (format[c] == '!' || format[c] == 'K')
 				{
+					format--;
 					c += _putchar(*format);
 					format++;
+					c += _putchar(*format);
+					format++;
+					continue;
 				}
-				continue;
+				c += _putchar('%');
 			}
 			else
 			{
-				fun = get_f(format);
 				c += fun(arg);
 				format++;
 				continue;
 			}
 		}
 		else
-		{
 			c += _putchar(*format);
-		}
+		format++;
 	}
 	va_end(arg);
 	return (c);
