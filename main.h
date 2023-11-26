@@ -12,6 +12,8 @@ int f_c(va_list arg);
 int f_s(va_list arg);
 int f_mod(va_list arg);
 int _putchar(char c);
+int f_int(va_list arg);
+int f_recursion(unsigned int u);
 
 /**
  * struct get_functions - struct to get function of spec

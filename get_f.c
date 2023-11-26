@@ -13,6 +13,8 @@ int (*get_f(const char *format))(va_list)
 		{'c', f_c},
 		{'s', f_s},
 		{'%', f_mod},
+		{'i', f_int},
+		{'d', f_int},
 		{0, NULL}
 	};
 
