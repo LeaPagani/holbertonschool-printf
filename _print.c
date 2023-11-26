@@ -18,15 +18,15 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			fun = get_f(format);
-			if (fun == NULL)
+			if (*format != 'c' && *format != 's' && *format != '%')
 			{
-				if (*format == '\0')
-					return (-1);
 				c += _putchar('%');
+				c += _putchar(*format);
+				format++;
+				continue;
 			}
 			else
-			{
+				fun = get_f(format);
 				c += fun(arg);
 				format++;
 				continue;
