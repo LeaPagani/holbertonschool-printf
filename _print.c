@@ -21,11 +21,8 @@ int _printf(const char *format, ...)
 			if (*format != 'c' && *format != 's' && *format != '%')
 			{
 				c += _putchar('%');
-				while (*format)
-				{
-					c += _putchar(*format);
-					format++;
-				}
+				c += _putchar(*format);
+				format++;
 				continue;
 			}
 			else
