@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 
 	va_start(ap, format);
 
-	if (!format || (format[0] == '%' && !format[1]))
+	if (!format)
 		return (-1);
 
 	for (i = 0; format && format[i]; i++)
