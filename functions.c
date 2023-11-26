@@ -10,7 +10,7 @@
  */
 int _write_char(char c)
 {
-	return write(1, &c, 1);
+	return (write(1, &c, 1));
 }
 
 /**
@@ -21,7 +21,7 @@ int _write_char(char c)
 int _print_char(va_list ap)
 {
 	char c = va_arg(ap, int);
-	return _write_char(c);
+	return (_write_char(c));
 }
 
 /**
@@ -38,12 +38,12 @@ int _print_string(va_list ap)
 		str = "(null)";
 
 	while (*str)
-    {
+	{
 		count += _write_char(*str);
 		str++;
 	}
 
-	return count;
+	return (count);
 }
 
 /**
@@ -54,6 +54,6 @@ int _print_string(va_list ap)
 int _print_percent(va_list ap)
 {
 	(void)ap; /* unused */
-	return _write_char('%');
+	return (_write_char('%'));
 }
 
