@@ -26,6 +26,7 @@ int _printf(const char *format, ...)
 				continue;
 			}
 			else
+			{
 				fun = get_f(format);
 				c += fun(arg);
 				format++;
@@ -33,7 +34,9 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
+		{
 			c += _putchar(*format);
+		}
 		format++;
 	}
 	va_end(arg);
