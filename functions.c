@@ -58,3 +58,25 @@ int _print_percent(va_list ap)
 	return (_write_char('%'));
 }
 
+/**
+ * _putchar - writes a character to the standard output
+ * @c: character to print
+ * Return: On success, 1. On error, -1 and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return write(1, &c, 1);
+}
+
+/**
+ * _puts - writes a string to the standard output
+ * @str: string to print
+ */
+void _puts(char *str)
+{
+	while (*str)
+	{
+		_putchar(*str);
+		str++;
+	}
+}

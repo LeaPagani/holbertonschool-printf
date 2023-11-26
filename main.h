@@ -18,5 +18,7 @@ int _print_char(va_list ap);
 int _print_string(va_list ap);
 int _print_percent(va_list ap);
 int _printf(const char *format, ...);
+int _putchar(char c);
+void _puts(char *str);
 
 #endif /* MAIN_H */

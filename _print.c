@@ -1,57 +1,51 @@
 #include "main.h"
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdio.h>
-
 /**
- * _printf - Matches specifier and returns count
- * @format: Character string
+ * _printf - Produces output according to a format
+ * @format: String
  * @...: Variadic arguments
  * Return: The number of characters printed
  */
 int _printf(const char *format, ...)
 {
-	int i, j;
-	int char_count = 0;
-	va_list ap;
+	va_list arg;
+	int c = 0;
 
-	print_type argument[] = {
-		{"c", _print_char},
-		{"s", _print_string},
-		{"%", _print_percent},
-		{NULL, NULL}};
-
-	va_start(ap, format);
-
-	if (!format || (format[0] == '%' && !format[1]))
+	if (format == NULL)
 		return (-1);
 
-	for (i = 0; format && format[i]; i++)
+	va_start(arg, format);
+	while (*format)
 	{
-		if (format[i] != '%')
+		if (*format == '%')
 		{
-			char_count += _write_char(format[i]);
-			continue;
-		}
+			format++;
+			if (*format == '\0')
+				return (-1);
 
-		for (j = 0; argument[j].parameter; j++)
-		{
-			if (*argument[j].parameter == format[i + 1])
+			if (*format == 'c')
+				c += _putchar(va_arg(arg, int));
+			else if (*format == 's')
+				format++;
+				_puts(va_arg(arg, char *));
+			if (*format == '%')
+				c += _putchar('%');
+			if (*format == '!')
 			{
-				char_count += argument[j].f(ap);
-				break;
+				format--;
+				c += _putchar(*format);
+				format++;
+				c += _putchar(*format);
+				format++;
+				continue;
 			}
+			else
+				c += _putchar('%');
 		}
+		else
+			c += _putchar(*format);
 
-		i++;
-
-		if (!argument[j].parameter)
-		{
-			char_count += write(1, format, -1);
-		}
+		format++;
 	}
-
-	va_end(ap);
-
-	return (char_count);
+	va_end(arg);
+	return (c);
 }
