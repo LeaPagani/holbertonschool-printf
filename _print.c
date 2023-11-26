@@ -23,15 +23,6 @@ int _printf(const char *format, ...)
 			{
 				if (*format == '\0')
 					return (-1);
-				if (format[c] == '!' || format[c] == 'K')
-				{
-					format--;
-					c += _putchar(*format);
-					format++;
-					c += _putchar(*format);
-					format++;
-					continue;
-				}
 				c += _putchar('%');
 			}
 			else
