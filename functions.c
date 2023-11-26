@@ -1,82 +1,64 @@
 #include "main.h"
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdio.h>
+
 
 /**
- * _write_char - writes a character to the standard output
- * @c: the character to write
- * Return: number of characters written
+ * f_c - add a character to stdout
+ *@arg: argument list
+ *Return: 1
  */
-int _write_char(char c)
+
+int f_c(va_list arg)
 {
-	return (write(1, &c, 1));
+	char f = va_arg(arg, int);
+
+	return (_putchar(f));
 }
 
 /**
- * _print_char - prints a character
- * @ap: va_list containing the character to print
- * Return: number of characters printed
+ * f_s - add string to stdout
+ * @arg: arguments to print
+ *
+ * Return: byte count
  */
-int _print_char(va_list ap)
-{
-	char c = va_arg(ap, int);
 
-	return (_write_char(c));
-}
-
-/**
- * _print_string - prints a string
- * @ap: va_list containing the string to print
- * Return: number of characters printed
- */
-int _print_string(va_list ap)
+int f_s(va_list arg)
 {
-	char *str = va_arg(ap, char *);
-	int count = 0;
+	int c = 0;
+	char *str = va_arg(arg, char *);
 
 	if (str == NULL)
 		str = "(null)";
 
 	while (*str)
 	{
-		count += _write_char(*str);
-		str++;
-	}
-
-	return (count);
-}
-
-/**
- * _print_percent - prints a percent character
- * @ap: va_list (unused)
- * Return: number of characters printed
- */
-int _print_percent(va_list ap)
-{
-	(void)ap; /* unused */
-	return (_write_char('%'));
-}
-
-/**
- * _putchar - writes a character to the standard output
- * @c: character to print
- * Return: On success, 1. On error, -1 and errno is set appropriately.
- */
-int _putchar(char c)
-{
-	return write(1, &c, 1);
-}
-
-/**
- * _puts - writes a string to the standard output
- * @str: string to print
- */
-void _puts(char *str)
-{
-	while (*str)
-	{
 		_putchar(*str);
 		str++;
+		c++;
 	}
+	return (c);
+}
+
+/**
+ * f_mod - print modulus
+ * @arg: arguments to print
+ *
+ * Return: 1
+ */
+
+int f_mod(va_list arg)
+{
+	(void)arg;
+	_putchar('%');
+	return (1);
+}
+
+/**
+ * _putchar - print character
+ * @c: character
+ * Return: 1
+ */
+
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }

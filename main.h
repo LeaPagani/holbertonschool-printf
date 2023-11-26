@@ -1,24 +1,28 @@
 #ifndef MAIN_H
 #define MAIN_H
-
-#include <unistd.h>
 #include <stdlib.h>
+#include <stddef.h>
 #include <stdarg.h>
-#include <stdio.h>
+#include <unistd.h>
 
-typedef struct print
-{
-	char *parameter;
-	int (*f)(va_list ap);
-} print_type;
+int _printf(const char *, ...);
+int (*get_f(const char *format))(va_list);
 
-/* Function prototypes */
-int _write_char(char c);
-int _print_char(va_list ap);
-int _print_string(va_list ap);
-int _print_percent(va_list ap);
-int _printf(const char *format, ...);
+int f_c(va_list arg);
+int f_s(va_list arg);
+int f_mod(va_list arg);
 int _putchar(char c);
-void _puts(char *str);
 
-#endif /* MAIN_H */
+/**
+ * struct get_functions - struct to get function of spec
+ * @s: specifier
+ * @f: function to use
+ */
+
+typedef struct get_functions
+{
+char s;
+int (*f)(va_list);
+} get;
+
+#endif
