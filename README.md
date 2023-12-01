@@ -1,15 +1,15 @@
-#C - Printf
+# C - Printf
 
  _printf - Format and print data to standard output
 
 
-SYNOPSIS
+# SYNOPSIS
 
 #include "main.h"
 int _printf(const char *format, ...);
 
 
-DESCRIPTION
+# DESCRIPTION
 
 The _printf function produces output to the standard output according to a
 format string. The format string is composed of zero or more directives,
@@ -19,7 +19,7 @@ The function returns the number of characters printed (excluding the null
 byte used to end output to strings). On error, it returns -1.
 
 
-FORMAT SPECIFIERS
+# FORMAT SPECIFIERS
 
 The following format specifiers are supported:
 
@@ -32,13 +32,13 @@ The following format specifiers are supported:
 %d, %i  Print an integer.
 
 
-RETURN VALUE
+# RETURN VALUE
 
 Upon successful completion, the _printf function returns the number of
 characters printed. On error, it returns -1.
 
 
-EXAMPLES
+# EXAMPLES
 
 The following examples illustrate the usage of _printf:
 
@@ -52,7 +52,7 @@ _printf("%s\n", "Hello, World!");    // Output: Hello, World!
 _printf("%%\n");    // Output: %
 
 
-ERROR HANDLING
+# ERROR HANDLING
 
 If the format string is NULL, the function returns -1.
 
